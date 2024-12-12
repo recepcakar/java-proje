@@ -8,5 +8,8 @@ public class bike  extends vehicle{
     	System.out.println("üst sınıftaki methodu override ettik motor çalıştı oldu ");
     	
     	super.gas(); // üst sınıftaki methoda böyle erişebiliriz
+    	
+    	
+    	//ydrhdsyhdyddrhgu
     }
 }
