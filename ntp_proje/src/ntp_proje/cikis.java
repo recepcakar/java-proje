@@ -29,9 +29,9 @@ import java.awt.event.ActionEvent;
 import java.awt.Color;
 
 public class cikis extends JFrame {
-	private static final String url = "jdbc:sqlserver://RecepsLenovo:1433;databaseName=j_proje;encrypt=true;trustServerCertificate=true";
-	private static final String user = "sa";
-	private static final String sifre = "300322";
+	private static final String url = "jdbc:sqlserver://:1433;databaseName=j_proje;encrypt=true;trustServerCertificate=true";
+	private static final String user = "";
+	private static final String sifre = "";
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

@@ -27,9 +27,9 @@ import java.awt.Toolkit;
 
 public class otopark extends JFrame {
 
-	private static final String url = "jdbc:sqlserver://RecepsLenovo:1433;databaseName=j_proje;encrypt=true;trustServerCertificate=true";
-	private static final String user = "sa";
-	private static final String password = "300322";
+	private static final String url = "jdbc:sqlserver://:1433;databaseName=j_proje;encrypt=true;trustServerCertificate=true";
+	private static final String user = "";
+	private static final String password = "";
 
 	private static final long serialVersionUID = 1L;
 	private JPanel contentPane;

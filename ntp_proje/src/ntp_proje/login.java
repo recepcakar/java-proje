@@ -37,9 +37,9 @@ public class login extends JFrame {
 	private JTextField txt_kullaniciadi;
 	private JTextField txt_sifre;
 
-	private static final String url = "jdbc:sqlserver://RecepsLenovo:1433;databaseName=j_proje;encrypt=true;trustServerCertificate=true";
-	private static final String user = "sa";
-	private static final String sifre = "300322";
+	private static final String url = "jdbc:sqlserver://:1433;databaseName=j_proje;encrypt=true;trustServerCertificate=true";
+	private static final String user = "";
+	private static final String sifre = "";
 
 	/**
 	 * Launch the application.
