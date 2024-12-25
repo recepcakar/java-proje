@@ -1,8 +1,0 @@
-/**
- * 
- */
-/**
- * 
- */
-module laboratuar_sorusu {
-}
