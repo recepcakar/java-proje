@@ -28,6 +28,7 @@ import javax.swing.LayoutStyle.ComponentPlacement;
 import javax.swing.JButton;
 import javax.swing.JTextField;
 import java.awt.Dialog.ModalExclusionType;
+import java.awt.Toolkit;
 
 public class login extends JFrame {
 
@@ -60,8 +61,10 @@ public class login extends JFrame {
 	 * Create the frame.
 	 */
 	public login() {
-		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
+		setTitle("LOGIN");
+		setIconImage(Toolkit.getDefaultToolkit().getImage(login.class.getResource("/images/Apps-preferences-desktop-user-password-icon.png")));
 		setResizable(false);
+		setModalExclusionType(ModalExclusionType.APPLICATION_EXCLUDE);
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 450, 300);
 		contentPane = new JPanel();
@@ -109,6 +112,7 @@ public class login extends JFrame {
 								.addComponent(txt_kullaniciadi, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
 										GroupLayout.PREFERRED_SIZE)
 								.addComponent(lbl_kullanıcıad))
+			
 						.addGap(18)
 						.addGroup(gl_contentPane.createParallelGroup(Alignment.BASELINE)
 								.addComponent(txt_sifre, GroupLayout.PREFERRED_SIZE, GroupLayout.DEFAULT_SIZE,
@@ -126,28 +130,28 @@ public class login extends JFrame {
 		 */
 	}
 
-	private void authenticateUser() {
-		String username = txt_kullaniciadi.getText();
-		String password = txt_sifre.getText();
+	private void authenticateUser() {  // giriş butonuna tıklandığında bu method çalışıypr
+		String username = txt_kullaniciadi.getText();  //kullanıcı adı içine yazılan stringi gettext() methodu ile alıyoruz
+		String password = txt_sifre.getText();  //sifre içine yazılan stringi gettext() methodu ile alıyoruz
 
-		// SQL sorgusunu kullanarak veritabanından kullanıcıyı kontrol et
-		String query = "SELECT kullaniciadi,sifre FROM kullanicigiris WHERE kullaniciadi = ? AND sifre = ?";
+		// SQL sorgusunu kullanarak veritabanından kullanıcıyı kontrol ediyoruz
+		String query = "SELECT kullaniciadi,sifre FROM kullanicigiris WHERE kullaniciadi = ? AND sifre = ?"; //
 
-		try (Connection connection = DriverManager.getConnection(url, user, sifre);
-				PreparedStatement preparedStatement = connection.prepareStatement(query)) {
-			preparedStatement.setString(1, username);
+		try (Connection connection = DriverManager.getConnection(url, user, sifre); //burada bağlanma gerçekleşmese catch bloğuna gider
+			PreparedStatement preparedStatement = connection.prepareStatement(query)) {
+			preparedStatement.setString(1, username);// 1 rakamı sorgudaki 1. '?' işaretini temsil eder yukarıda aldığımız username atıyoruz
 			preparedStatement.setString(2, password);
 
-			ResultSet resultSet = preparedStatement.executeQuery();
+			ResultSet resultSet = preparedStatement.executeQuery(); // çıkan sonuçları result nexte atıyoruz
 
 			if (resultSet.next()) {
 				// Eğer giriş başarılıysa ikinci ekrana geçiş yap
-				JOptionPane.showMessageDialog(this, "Giriş başarılı!");
+				JOptionPane.showMessageDialog(this, "Giriş başarılı!"); //ekrana bilgi veriyoruz
 				new otopark().setVisible(true); // İkinci ekranı aç
 				this.setVisible(false); // İlk ekranı kapat
 			} else {
 				JOptionPane.showMessageDialog(null, "Geçersiz kullanıcı adı veya şifre.", "Hata",
-						JOptionPane.ERROR_MESSAGE);
+						JOptionPane.ERROR_MESSAGE); //eğer resulttan sonuç çıkmazsa tabloda yok demektir hata döner
 			}
 		} catch (SQLException e) {
 			e.printStackTrace();
